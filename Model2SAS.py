@@ -337,6 +337,7 @@ class model2sas:
         pool.join()
         I = abs(np.array(result.get()))**2
         I = I.sum(axis=0)
+        I = I * (self.interval**3)**2 #to normalize SAS curves of same model but with different intervals
         return I
 
     def genSasCurve(self, qmin=0.01, qmax=1, qnum=200, lmax=50):
